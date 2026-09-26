@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="ページが見つかりません" noindex={true}>
@@ -7,6 +8,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="eyebrow">404</p>
     <h1>ページが見つかりません</h1>
     <p>URLが変更されたか、ページが存在しない可能性があります。</p>
-    <a class="button" href="/">トップへ戻る</a>
+    <a class="button" href={base}>トップへ戻る</a>
   </main>
 </BaseLayout>
