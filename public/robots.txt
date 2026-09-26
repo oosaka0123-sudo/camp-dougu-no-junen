@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://oosaka0123-sudo.github.io/camp-dougu-no-junen/sitemap-index.xml

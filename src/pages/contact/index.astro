@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';import SiteHeader from '../../components/SiteHeader.astro';import SiteFooter from '../../components/SiteFooter.astro';const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title="お問い合わせ"><SiteHeader/><main id="main"><section class="page-hero"><div class="shell"><p class="eyebrow">08 / CONTACT</p><h1 class="display-tight">情報は、<br/>現場から集める。</h1><p class="page-deck">十年以上使った個体、修理、廃番部品、誤情報の指摘。一次情報を歓迎します。</p></div></section><section class="contact-panel"><div class="contact-copy"><h2 class="section-title">修理・部品・長期使用の<br/>情報を送る。</h2><p>GitHub Issuesを情報提供・訂正窓口として利用します。住所、電話、注文番号、秘密情報は投稿しないでください。</p><a class="cta-line" href="https://github.com/oosaka0123-sudo/camp-dougu-no-junen/issues/new" rel="noreferrer">GITHUB ISSUEを開く →</a></div><div class="hero-visual"><img src={`${base}visuals/contact-signal.svg`} width="1600" height="1000" alt="情報提供の信号を表す抽象ビジュアル"/></div></section></main><SiteFooter/></BaseLayout>
