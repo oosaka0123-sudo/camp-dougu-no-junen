@@ -1,0 +1,20 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+<div class="opening" data-opening aria-hidden="true">
+  <video class="opening-film" autoplay muted playsinline preload="metadata" poster={`${base}visuals/home-patina.svg`}>
+    <source src={`${base}media/opening.webm`} type="video/webm" />
+  </video>
+  <div class="opening-shade"></div>
+  <div class="opening-copy"><p>THE TEN-YEAR TEST</p><strong>十年後に、<br />何が残る。</strong></div>
+  <button type="button" class="opening-skip" data-opening-skip>SKIP / ENTER</button>
+</div>
+<script>
+  const overlay=document.querySelector('[data-opening]');
+  const skip=document.querySelector('[data-opening-skip]');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const seen=sessionStorage.getItem('camp-ten-opening')==='1';
+  const close=()=>{if(!(overlay instanceof HTMLElement))return;overlay.classList.add('is-leaving');sessionStorage.setItem('camp-ten-opening','1');window.setTimeout(()=>overlay.remove(),760)};
+  if(overlay instanceof HTMLElement){if(seen||reduced){overlay.remove()}else{overlay.setAttribute('aria-hidden','false');window.setTimeout(close,4300)}}
+  skip?.addEventListener('click',close);
+</script>

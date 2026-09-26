@@ -1,13 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+import BaseLayout from '../layouts/BaseLayout.astro';import SiteHeader from '../components/SiteHeader.astro';import SiteFooter from '../components/SiteFooter.astro';const base=import.meta.env.BASE_URL;
 ---
-
-<BaseLayout title="ページが見つかりません" noindex={true}>
-  <main class="error-page container">
-    <p class="eyebrow">404</p>
-    <h1>ページが見つかりません</h1>
-    <p>URLが変更されたか、ページが存在しない可能性があります。</p>
-    <a class="button" href={base}>トップへ戻る</a>
-  </main>
-</BaseLayout>
+<BaseLayout title="ページが見つかりません" noindex={true}><SiteHeader/><main id="main" class="error-page dark-section"><div class="shell"><p class="eyebrow">404 / LOST GEAR</p><h1 class="display-tight">道具が、<br/>見つからない。</h1><p class="lead">URLが変わったか、ページが移動した可能性があります。</p><div class="source-links"><a href={base}>HOMEへ戻る →</a><a href={`${base}archive/`}>ARCHIVEを見る →</a></div></div></main><SiteFooter/></BaseLayout>

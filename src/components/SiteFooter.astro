@@ -1,16 +1,7 @@
 ---
-const base = import.meta.env.BASE_URL;
+const base=import.meta.env.BASE_URL;
+const nav=[['CONCEPT','concept/'],['CATEGORIES','categories/'],['ARCHIVE','archive/'],['REPAIR','repair/'],['VALUE','value/'],['JOURNAL','journal/'],['ABOUT','about/'],['CONTACT','contact/']];
 ---
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <strong>キャンプ道具の十年</strong>
-      <p>十年後の価値から、キャンプ道具を選ぶ。</p>
-    </div>
-    <div class="footer-links">
-      <a href={`${base}#criteria`}>評価基準</a>
-      <a href={`${base}rankings/torch/`}>比較記事</a>
-    </div>
-  </div>
-  <div class="container footer-note"><p>価格・中古相場・修理情報は確認日を明示し、未確認情報を数値化しません。広告報酬で順位は変更しません。</p></div>
-</footer>
+<footer class="site-footer"><div class="shell footer-head"><p class="footer-kicker">CAMP DŌGU NO JŪNEN / EST. 2026</p><h2>十年後に、<br />残っているか。</h2></div>
+<div class="shell footer-grid"><nav aria-label="フッターナビゲーション">{nav.map(([label,path],i)=><a href={`${base}${path}`}><span>{String(i+1).padStart(2,'0')}</span>{label}</a>)}</nav>
+<div class="footer-policy"><p>価格・中古相場・修理情報は確認日と根拠を明示。未確認の耐久年数や残価率は創作しません。広告報酬は順位決定に使いません。</p><div class="footer-small"><a href={`${base}privacy/`}>PRIVACY / POLICY</a><a href="https://github.com/oosaka0123-sudo/camp-dougu-no-junen" rel="noreferrer">GITHUB</a></div></div></div></footer>

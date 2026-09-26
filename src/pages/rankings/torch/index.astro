@@ -1,43 +1,10 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SiteHeader from '../../../components/SiteHeader.astro';
-import SiteFooter from '../../../components/SiteFooter.astro';
-const slots = Array.from({ length: 5 }, (_, i) => ({
-  rank: i + 1,
-  name: '調査中',
-  long: '未評価',
-  repair: '未評価',
-  resale: 'データ未収集',
-}));
+import BaseLayout from '../../../layouts/BaseLayout.astro';import SiteHeader from '../../../components/SiteHeader.astro';import SiteFooter from '../../../components/SiteFooter.astro';const base=import.meta.env.BASE_URL;
+const products=[
+{rank:'01',name:'SOTO フィールドチャッカー ST-451',maker:'SOTO',status:'現行',weight:'157g',temp:'1,300℃',fuel:'CB缶',repair:'メーカー修理窓口あり',resale:'未評価',why:'日本製の現行モデル。公式取説と修理窓口を確認でき、CB缶で燃料入手性も高い。',weak:'圧電点火を含むため、手動着火式ほど構造は単純ではない。',url:'https://soto.shinfuji.co.jp/products/st-451/'},
+{rank:'02',name:'イワタニ アウトドアトーチバーナーII',maker:'Iwatani',status:'2025年3月〜',weight:'約175g',temp:'約1,400℃',fuel:'イワタニCB缶',repair:'取説・メーカー窓口あり',resale:'未評価',why:'現行取扱商品。日本製で燃料体系が明確。',weak:'ABS樹脂を使うため、金属主体のトーチとは劣化ポイントが異なる。',url:'https://www.iwatani.co.jp/jpn/consumer/products/cg/burner/cb-tc-odorp/'},
+{rank:'03',name:'Snow Peak フォールディングトーチ GT-120',maker:'Snow Peak',status:'現行掲載確認',weight:'—',temp:'—',fuel:'専用ガス系',repair:'オンライン修理受付あり',resale:'未評価',why:'長期修理を前提にしたアフターサービス体制が強い。',weak:'「永久保証」は無償修理を意味しない。通常使用の破損や経年劣化は有償対応を含む。',url:'https://www.snowpeak.co.jp/afterservice/'},
+{rank:'04',name:'SOTO スライドガストーチ ST-487',maker:'SOTO',status:'現行',weight:'57g',temp:'1,300℃',fuel:'充てん式',repair:'メーカー修理窓口あり',resale:'未評価',why:'伸縮火口と防塵キャップを備える現行携帯トーチ。',weak:'連続使用は30秒まで。長時間の火起こしとは役割が違う。',url:'https://soto.shinfuji.co.jp/products/st-487/'},
+{rank:'05',name:'SOTO フィールドフレーム ST-490',maker:'SOTO',status:'2026年3月発売',weight:'202g',temp:'800〜1,300℃',fuel:'充てん式',repair:'メーカー修理窓口あり',resale:'未評価',why:'公式仕様と取扱説明書を確認できる新型。',weak:'2026年発売で長期実績がまだないため、十年視点では観察開始段階。',url:'https://soto.shinfuji.co.jp/products/st-490/'}];
 ---
-<BaseLayout title="10年使いたいガストーチおすすめ5選" description="修理性・部品供給・中古相場を確認して選ぶガストーチ比較ページ。">
-  <SiteHeader />
-  <main>
-    <section class="article-hero"><div class="container narrow">
-      <p class="eyebrow">RANKING TEMPLATE / TORCH</p>
-      <h1>10年使いたいガストーチ<br />おすすめ5選</h1>
-      <p class="lead">修理性・部品供給・残価まで同じ基準で比較。現在は一次調査前のテンプレートで、順位・価格・残価率は未掲載です。</p>
-      <p class="data-note">最終データ確認：未実施</p>
-    </div></section>
-    <section class="section"><div class="container narrow">
-      <h2>比較表</h2>
-      <div class="table-wrap"><table><thead><tr><th>順位</th><th>製品</th><th>長期指数</th><th>修理指数</th><th>残価</th></tr></thead><tbody>
-        {slots.map((item) => <tr><td>{item.rank}</td><td>{item.name}</td><td>{item.long}</td><td>{item.repair}</td><td>{item.resale}</td></tr>)}
-      </tbody></table></div>
-    </div></section>    <section class="section section-muted"><div class="container narrow">
-      <p class="kicker">HOW WE JUDGE</p><h2>掲載前に確認する項目</h2>
-      <ul class="check-list">
-        <li>発売年・定番歴</li><li>公式修理受付の有無</li><li>交換部品の単品供給</li>
-        <li>故障しやすい箇所と分解性</li><li>新品実売価格</li><li>中古の実取引価格と件数</li>
-      </ul>
-    </div></section>
-    <section class="section"><div class="container narrow">
-      <p class="kicker">PRODUCT CARTE</p><h2>各商品のカルテ</h2>
-      <div class="product-stack">{slots.map((item) => <article class="product-card">
-        <span class="rank-label">{item.rank}位候補</span><h3>{item.name}</h3>
-        <p>基本スペック、良い点、弱点、故障箇所、修理、部品、中古相場、新品/中古判断、長期メンテナンスを同じ順序で掲載します。</p>
-      </article>)}</div>
-    </div></section>
-  </main>
-  <SiteFooter />
-</BaseLayout>
+<BaseLayout title="10年使いたいガストーチ5選" description="修理性・現行性・燃料・公式サポートから選ぶ、長期所有を前提にしたガストーチ5選。" pageType="article"><SiteHeader/><main id="main"><section class="article-hero"><div class="shell article-hero-grid"><div><p class="eyebrow">RANKING / 01 / TORCH</p><h1 class="display-tight">10年使いたい<br/>ガストーチ5選。</h1><p class="lead">売れ筋ではなく「壊れた後に戻れるか」「燃料が続くか」「現行サポートが見えるか」で比較。残価は実取引サンプル収集前のため順位へ入れていません。</p><span class="data-stamp">DATA CHECK / 2026.09.26</span></div><div class="hero-visual"><img src={`${base}visuals/torch-xray.svg`} width="1600" height="1000" alt="ガストーチを分解図のように表現した抽象ビジュアル"/></div></div></section><section class="section-pad bone-section"><div class="shell"><h2 class="section-title">先に、違いを一枚で。</h2><div class="compare-wrap"><table class="compare-table"><thead><tr><th>順位</th><th>製品</th><th>重量</th><th>温度</th><th>燃料</th><th>修理</th><th>残価</th></tr></thead><tbody>{products.map(p=><tr><td>{p.rank}</td><td><strong>{p.name}</strong><br/><small>{p.status}</small></td><td>{p.weight}</td><td>{p.temp}</td><td>{p.fuel}</td><td>{p.repair}</td><td>{p.resale}</td></tr>)}</tbody></table></div></div></section>{products.map(p=><section class="product-rank"><div class="shell product-rank-grid"><div class="rank-big">{p.rank}</div><div><p class="kicker">{p.maker}</p><h2>{p.name}</h2><p class="lead">{p.why}</p><ul class="fact-list"><li><b>現行性</b><span>{p.status}</span></li><li><b>重量</b><span>{p.weight}</span></li><li><b>火炎温度</b><span>{p.temp}</span></li><li><b>燃料</b><span>{p.fuel}</span></li><li><b>修理</b><span>{p.repair}</span></li><li><b>残価</b><span>{p.resale}</span></li></ul></div><div><p class="kicker">WEAK POINT</p><p>{p.weak}</p><div class="source-links"><a href={p.url} rel="noreferrer">公式情報を見る ↗</a></div></div></div></section>)}<section class="section-pad dark-section"><div class="shell editorial-two"><h2 class="section-title">火器は、修理性だけで選ばない。</h2><div><p class="lead">ガス機器はメーカーの安全指示が最優先です。ユーザー修理を推奨していない製品は自分で分解しません。</p><p>現行の安全表示も購入時に確認します。</p></div></div></section></main><SiteFooter/></BaseLayout>

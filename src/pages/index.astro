@@ -1,63 +1,13 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-const categories = [
-  ['火器・熱源','焚き火台、バーナー、トーチ、ランタン'],
-  ['幕体・寝具','ソロテント、ファミリーテント、コット、寝袋'],
-  ['調理・保冷','クーラー、ケトル、クッカー、ダッチオーブン'],
-  ['ファニチャー','チェア、テーブル'],
-  ['ツール・小物','ペグ、ハンマー、車中泊用品'],
-];
-const base = import.meta.env.BASE_URL;
-const metrics = [
-  ['長期指数','素材・構造・定番歴・部品供給から長期所有のしやすさを評価。'],
-  ['修理指数','公式修理、純正部品、分解性、交換可能部品を確認。'],
-  ['残価率','中古の実取引データが確認できた製品だけを数値化。'],
-];
+import BaseLayout from '../layouts/BaseLayout.astro';import SiteHeader from '../components/SiteHeader.astro';import SiteFooter from '../components/SiteFooter.astro';import OpeningSequence from '../components/OpeningSequence.astro';const base=import.meta.env.BASE_URL;
+const cats=[['01','FIRE / HEAT','火器・熱源','categories/#fire'],['02','SHELTER / SLEEP','幕体・寝具','categories/#shelter'],['03','KITCHEN / COOLER','調理・保冷','categories/#kitchen'],['04','FURNITURE','ファニチャー','categories/#furniture'],['05','TOOLS / HARDWARE','ツール・小物','categories/#tools']];
 ---
-<BaseLayout>
-  <SiteHeader />
-  <main>
-    <section class="hero hero-camp">
-      <div class="container hero-inner">
-        <p class="eyebrow">CAMP GEAR FOR THE LONG RUN</p>
-        <h1>十年後の価値から、<br />キャンプ道具を選ぶ。</h1>
-        <p class="lead">流行や広告料ではなく、長く使える構造、修理できる仕組み、部品供給、中古で残る価値まで調べるキャンプギア専門メディア。</p>
-        <div class="actions"><a class="button" href={`${base}rankings/torch/`}>比較ページを見る</a><a class="text-link" href="#criteria">評価基準を見る</a></div>
-      </div>
-    </section>    <section class="manifesto">
-      <div class="container manifesto-grid">
-        <p class="kicker">OUR STANDARD</p>
-        <div><h2>人気だから、では選ばない。</h2><p>高価だから高評価にも、売れているから上位にも（しません）。弱点、壊れやすい箇所、部品供給、中古相場まで同じフォーマットで公開します。</p></div>
-      </div>
-    </section>
-    <section id="criteria" class="section">
-      <div class="container">
-        <div class="section-heading"><p class="kicker">THREE METRICS</p><h2>3つのものさし</h2></div>
-        <div class="grid metrics">{metrics.map(([title,text]) => <article class="card metric-card"><h3>{title}</h3><p>{text}</p></article>)}</div>
-      </div>
-    </section>
-    <section id="categories" class="section section-dark">
-      <div class="container">
-        <div class="section-heading"><p class="kicker">CATEGORIES</p><h2>道具から探す</h2></div>
-        <div class="category-list">
-          {categories.map(([title,text], i) => <article class="category-row"><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container feature">
-        <div><p class="kicker">FIRST TEMPLATE</p><h2>まずはトーチ5選から。</h2><p>順位や残価率は、一次確認が終わるまで掲載しません。比較表、修理情報、中古判断、メンテナンスまでを同じ型で積み上げます。</p></div>
-        <a class="button" href={`${base}rankings/torch/`}>トーチ比較ページへ</a>
-      </div>
-    </section>    <section class="section section-muted">
-      <div class="container policy">
-        <p class="kicker">EDITORIAL POLICY</p>
-        <h2>数字は、確認できたものだけ。</h2>
-        <p>「十年使える」は保証表現にしません。実使用年数、公式サポート、素材、部品供給、中古取引など確認可能な根拠を分けて掲載し、推定値は推定と明記します。</p>
-      </div>
-    </section>
-  </main>
-  <SiteFooter />
-</BaseLayout>
+<BaseLayout><OpeningSequence/><SiteHeader/><main id="main">
+<section class="home-hero"><div class="hero-bg"><img src={`${base}visuals/home-patina.svg`} width="1600" height="1000" alt="" fetchpriority="high"/></div><div class="shell home-hero-inner"><div data-reveal><p class="eyebrow">CAMP GEAR / LONG LIFE ARCHIVE</p><h1 class="display">キャンプ道具の<br/>十年。</h1></div><div data-reveal><p>流行ではなく、時間で選ぶ。修理できるか、部品は残るか、中古で価値は残るか。道具の「買った後」を記録するメディアです。</p><div class="hero-meta"><span>EST. 2026</span><span>STATIC / FIELD / DATA</span></div></div></div></section>
+<section class="section-pad paper-section"><div class="shell manifesto-band"><div data-reveal><p class="kicker">WHY TEN YEARS?</p><h2 class="section-title">売るためではなく、<br/>残すために調べる。</h2></div><div class="manifesto-copy" data-reveal>安いから選ばない。高いから評価しない。<br/>十年後に「まだ使いたい」と思えるかを、構造・修理・部品・残価の事実から考える。</div></div></section>
+<section class="metric-rail bone-section"><div class="metric" data-reveal><span class="micro">01 / LONG LIFE</span><b>長期指数</b><p>素材、構造、定番歴、部品供給。</p></div><div class="metric" data-reveal><span class="micro">02 / REPAIR</span><b>修理指数</b><p>公式修理、交換部品、分解性。</p></div><div class="metric" data-reveal><span class="micro">03 / VALUE</span><b>残価率</b><p>実取引を確認できた製品だけ数値化。</p></div></section>
+<section class="section-pad dark-section"><div class="shell home-index"><div class="sticky-copy" data-reveal><p class="kicker">GEAR INDEX</p><h2 class="section-title">道具から、<br/>十年を探す。</h2></div><div class="category-lines">{cats.map(([no,en,ja,path])=><a href={`${base}${path}`} data-reveal><span>{no}</span><strong>{ja}</strong><em>{en} →</em></a>)}</div></div></section>
+<section class="home-visual-split"><div class="hero-visual"><img src={`${base}visuals/archive-blueprint.svg`} width="1600" height="1000" alt="道具を設計図のように分解して捉える抽象ビジュアル" loading="lazy"/></div><div class="home-visual-copy" data-reveal><p class="kicker">GEAR CARTE / 001</p><h2 class="section-title">「おすすめ」の前に、<br/>カルテを作る。</h2><p>発売年、仕様変更、故障箇所、修理窓口、交換部品、相場。ひとつの道具を同じフォーマットで追い続けます。</p><div class="source-links"><a href={`${base}archive/`}>ARCHIVEを見る →</a></div></div></section>
+<section class="section-pad paper-section"><div class="shell story-strip"><article class="story-step" data-reveal><span>01 / BUY</span><h3>買う前</h3><p>構造とサポートを見る。</p></article><article class="story-step" data-reveal><span>02 / USE</span><h3>使う</h3><p>傷と消耗を記録。</p></article><article class="story-step" data-reveal><span>03 / REPAIR</span><h3>直す</h3><p>復帰経路を確認。</p></article><article class="story-step" data-reveal><span>04 / TRACE</span><h3>残る</h3><p>中古流通を追う。</p></article></div></section>
+<section class="quote-block bone-section"><div class="shell" data-reveal><p class="kicker">EDITORIAL MANIFESTO</p><blockquote>十年後に残るものだけを、記録する。</blockquote></div></section>
+</main><SiteFooter/></BaseLayout>
