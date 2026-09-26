@@ -2,51 +2,59 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-
-const principles = [
-  ['Static First', '静的生成で成立するページは静的に。SSRは要件がある部分だけ。'],
-  ['Zero-JS', 'HTML/CSSで成立するUIに不要なJavaScriptを送らない。'],
-  ['Islands', '動的UIは局所化し、必要なタイミングだけHydrationする。'],
-  ['Accessible', 'semantic HTML、キーボード操作、コントラストを標準にする。'],
+const categories = [
+  ['火器・熱源','焚き火台、バーナー、トーチ、ランタン'],
+  ['幕体・寝具','ソロテント、ファミリーテント、コット、寝袋'],
+  ['調理・保冷','クーラー、ケトル、クッカー、ダッチオーブン'],
+  ['ファニチャー','チェア、テーブル'],
+  ['ツール・小物','ペグ、ハンマー、車中泊用品'],
+];
+const metrics = [
+  ['長期指数','素材・構造・定番歴・部品供給から長期所有のしやすさを評価。'],
+  ['修理指数','公式修理、純正部品、分解性、交換可能部品を確認。'],
+  ['残価率','中古の実取引データが確認できた製品だけを数値化。'],
 ];
 ---
-
 <BaseLayout>
   <SiteHeader />
   <main>
-    <section class="hero">
-      <div class="container">
-        <p class="eyebrow">ASTRO-FIRST WEB STANDARD</p>
-        <h1>速く、軽く、保守しやすいWebを標準から。</h1>
-        <p class="lead">コンテンツ中心サイトの共通スターター。Astro標準機能を優先し、依存とクライアントJavaScriptを必要最小限にします。</p>
-        <a class="button" href="#start">開始方法を見る</a>
+    <section class="hero hero-camp">
+      <div class="container hero-inner">
+        <p class="eyebrow">CAMP GEAR FOR THE LONG RUN</p>
+        <h1>十年後の価値から、<br />キャンプ道具を選ぶ。</h1>
+        <p class="lead">流行や広告料ではなく、長く使える構造、修理できる仕組み、部品供給、中古で残る価値まで調べるキャンプギア専門メディア。</p>
+        <div class="actions"><a class="button" href="/rankings/torch/">比較ページを見る</a><a class="text-link" href="#criteria">評価基準を見る</a></div>
+      </div>
+    </section>    <section class="manifesto">
+      <div class="container manifesto-grid">
+        <p class="kicker">OUR STANDARD</p>
+        <div><h2>人気だから、では選ばない。</h2><p>高価だから高評価にも、売れているから上位にも（しません）。弱点、壊れやすい箇所、部品供給、中古相場まで同じフォーマットで公開します。</p></div>
       </div>
     </section>
-
-    <section id="principles" class="section">
+    <section id="criteria" class="section">
       <div class="container">
-        <h2>基本方針</h2>
-        <div class="grid">
-          {principles.map(([title, text]) => (
-            <article class="card">
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
+        <div class="section-heading"><p class="kicker">THREE METRICS</p><h2>3つのものさし</h2></div>
+        <div class="grid metrics">{metrics.map(([title,text]) => <article class="card metric-card"><h3>{title}</h3><p>{text}</p></article>)}</div>
+      </div>
+    </section>
+    <section id="categories" class="section section-dark">
+      <div class="container">
+        <div class="section-heading"><p class="kicker">CATEGORIES</p><h2>道具から探す</h2></div>
+        <div class="category-list">
+          {categories.map(([title,text], i) => <article class="category-row"><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}
         </div>
       </div>
     </section>
-
-    <section id="start" class="section section-muted">
-      <div class="container prose">
-        <h2>新規Projectで最初に変更するもの</h2>
-        <ol>
-          <li><code>SITE_URL</code> と <code>src/config/site.ts</code> を本番値へ変更</li>
-          <li>要件を確認し、Static / SSR境界を決定</li>
-          <li>反復コンテンツはContent Collectionsへ</li>
-          <li><code>npm run check</code> と <code>npm run build</code> を通す</li>
-          <li>PC / Mobile / Preview / 公開URLを確認</li>
-        </ol>
+    <section class="section">
+      <div class="container feature">
+        <div><p class="kicker">FIRST TEMPLATE</p><h2>まずはトーチ5選から。</h2><p>順位や残価率は、一次確認が終わるまで掲載しません。比較表、修理情報、中古判断、メンテナンスまでを同じ型で積み上げます。</p></div>
+        <a class="button" href="/rankings/torch/">トーチ比較ページへ</a>
+      </div>
+    </section>    <section class="section section-muted">
+      <div class="container policy">
+        <p class="kicker">EDITORIAL POLICY</p>
+        <h2>数字は、確認できたものだけ。</h2>
+        <p>「十年使える」は保証表現にしません。実使用年数、公式サポート、素材、部品供給、中古取引など確認可能な根拠を分けて掲載し、推定値は推定と明記します。</p>
       </div>
     </section>
   </main>
