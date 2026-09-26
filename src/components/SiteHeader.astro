@@ -1,10 +1,13 @@
+---
+const base = import.meta.env.BASE_URL;
+---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">キャンプ道具の十年</a>
+    <a class="brand" href={base}>キャンプ道具の十年</a>
     <nav aria-label="メインナビゲーション">
-      <a href="/#categories">カテゴリ</a>
-      <a href="/#criteria">評価基準</a>
-      <a href="/rankings/torch/">比較記事</a>
+      <a href={`${base}#categories`}>カテゴリ</a>
+      <a href={`${base}#criteria`}>評価基準</a>
+      <a href={`${base}rankings/torch/`}>比較記事</a>
     </nav>
   </div>
 </header>
