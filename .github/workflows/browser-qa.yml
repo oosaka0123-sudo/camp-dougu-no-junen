@@ -1,0 +1,38 @@
+name: Browser QA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - name: Generate opening film
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          mkdir -p public/media
+          ffmpeg -y -f lavfi -i "color=c=0x26352c:s=1280x720:d=4.3:r=24"             -vf "drawbox=x=70:y=60:w=1140:h=600:color=0xf4efe3@0.12:t=2,drawbox=x=0:y=500:w=1280:h=220:color=0x673724@0.28:t=fill"             -an -c:v libvpx-vp9 -crf 38 -b:v 0 -pix_fmt yuv420p public/media/opening.webm
+      - name: Build
+        run: npm run build
+        env:
+          SITE_URL: http://127.0.0.1:4173/
+          BASE_PATH: /
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 -d dist > /tmp/camp-http.log 2>&1 &
+          sleep 2
+      - name: Run browser QA
+        run: node scripts/browser-qa.mjs
+        env:
+          QA_BASE_URL: http://127.0.0.1:4173/
