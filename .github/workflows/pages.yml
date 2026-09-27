@@ -25,10 +25,16 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v5
       - run: npm ci
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
       - name: Generate 720p silent opening film
         run: |
           mkdir -p public/media
-          ffmpeg -y -f lavfi -i "color=c=0x26352c:s=1280x720:d=4.3:r=24"             -vf "drawbox=x=70:y=60:w=1140:h=600:color=0xf4efe3@0.12:t=2,drawbox=x=0:y=500:w=1280:h=220:color=0x673724@0.28:t=fill,vignette=PI/5"             -an -c:v libvpx-vp9 -crf 38 -b:v 0 -pix_fmt yuv420p public/media/opening.webm
+          ffmpeg -y -f lavfi -i "color=c=0x26352c:s=1280x720:d=4.3:r=24"             -vf "drawbox=x=70:y=60:w=1140:h=600:color=0xf4efe3@0.12:t=2,drawbox=x=0:y=500:w=1280:h=220:color=0x673724@0.28:t=fill"             -an -c:v libvpx-vp9 -crf 38 -b:v 0 -pix_fmt yuv420p public/media/opening.webm
+          ffprobe -v error -show_entries stream=width,height,codec_name -of default=noprint_wrappers=1 public/media/opening.webm
           test -s public/media/opening.webm
       - run: npm run build
         env:
