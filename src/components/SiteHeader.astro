@@ -1,19 +1,19 @@
 ---
 const base = import.meta.env.BASE_URL;
 const links: [string,string,string][] = [
- ['01','CONCEPT','concept/'],['02','CATEGORIES','categories/'],['03','ARCHIVE','archive/'],['04','REPAIR','repair/'],
- ['05','VALUE','value/'],['06','JOURNAL','journal/'],['07','ABOUT','about/'],['08','CONTACT','contact/']
+ ['01','CONCEPT','concept/'],['02','LONGSELLER','longseller/'],['03','CATEGORIES','categories/'],['04','ARCHIVE','archive/'],['05','REPAIR','repair/'],
+ ['06','VALUE','value/'],['07','JOURNAL','journal/'],['08','ABOUT','about/'],['09','CONTACT','contact/']
 ];
 ---
 <header class="site-header"><div class="shell header-inner">
   <a class="brand" href={base} aria-label="キャンプ道具の十年 ホーム"><span class="brand-mark">十</span><span class="brand-copy">キャンプ道具の十年<small>TOOLS THAT OUTLAST TRENDS.</small></span></a>
-  <nav class="desktop-nav" aria-label="メインナビゲーション"><a href={`${base}archive/`}>ARCHIVE</a><a href={`${base}repair/`}>REPAIR</a><a href={`${base}value/`}>VALUE</a><a href={`${base}rankings/torch/`}>RANKING 01</a></nav>
+  <nav class="desktop-nav" aria-label="メインナビゲーション"><a href={`${base}longseller/`}>LONGSELLER</a><a href={`${base}archive/`}>ARCHIVE</a><a href={`${base}repair/`}>REPAIR</a><a href={`${base}value/`}>VALUE</a></nav>
   <button class="menu-trigger" type="button" aria-controls="menu-overlay" aria-expanded="false" data-menu-open><span>MENU</span><i></i><i></i></button>
 </div></header>
 <div class="menu-overlay" id="menu-overlay" aria-hidden="true" data-menu>
- <div class="menu-top shell"><span class="menu-index">INDEX / 08</span><button class="menu-close" type="button" data-menu-close aria-label="メニューを閉じる">×</button></div>
+ <div class="menu-top shell"><span class="menu-index">INDEX / 09</span><button class="menu-close" type="button" data-menu-close aria-label="メニューを閉じる">×</button></div>
  <nav class="menu-grid shell" aria-label="オーバーレイナビゲーション">{links.map(([no,label,path])=><a href={`${base}${path}`}><span>{no}</span><strong>{label}</strong></a>)}</nav>
- <div class="menu-foot shell"><p>十年後に残るものだけを、記録する。</p><a href={`${base}privacy/`}>PRIVACY / EDITORIAL POLICY</a></div>
+ <div class="menu-foot shell"><p>十年選ばれ続けた道具を、記録する。</p><a href={`${base}privacy/`}>PRIVACY / EDITORIAL POLICY</a></div>
 </div>
 <script>
  const menu=document.querySelector('[data-menu]'),open=document.querySelector('[data-menu-open]'),close=document.querySelector('[data-menu-close]');
