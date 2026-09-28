@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title="ロングセラー基準" description="キャンプ道具の十年がロングセラーをどう判定するか。発売年・継続販売・世代継承・修理・部品・中古流通を公開基準で評価します。">
+<SiteHeader/><main id="main">
+<section class="page-hero"><div class="shell page-hero-grid">
+  <div data-reveal><p class="eyebrow">02 / LONGSELLER</p><h1 class="display-tight">十年、<br/>選ばれているか。</h1><p class="page-deck">このサイトでは、新しい高性能より先に「何年売れ続けてきたか」を見ます。ロングセラーは結果であり、広告コピーではありません。</p></div>
+  <figure data-reveal><div class="hero-visual"><img src={`${base}visuals/longseller-seal.svg`} width="1600" height="1000" alt="十年以上続くロングセラーを年輪で表現した抽象ビジュアル"/></div><figcaption class="figure-caption"><span>LONGSELLER / 10Y+</span><span>TIME AS EVIDENCE</span></figcaption></figure>
+</div></section>
+
+<section class="section-pad bone-section"><div class="shell editorial-three">
+  <div data-reveal><span class="micro">10Y+ / STANDARD</span><h3>十年定番</h3><p>発売年または製品系譜を確認でき、10年以上選ばれ続けているもの。最も強い評価対象です。</p></div>
+  <div data-reveal><span class="micro">5–9Y / CANDIDATE</span><h3>定番候補</h3><p>5〜9年の継続実績を確認できるもの。修理・部品・中古流通を追いながら十年定番入りを待ちます。</p></div>
+  <div data-reveal><span class="micro">0–4Y / WATCH</span><h3>観察中</h3><p>5年未満、または発売年を確認できないもの。性能が高くてもロングセラーとしては評価を確定しません。</p></div>
+</div></section>
+
+<section class="section-pad dark-section"><div class="shell timeline">
+  <aside data-reveal><p class="kicker">LONGSELLER CHECK</p><h2 class="section-title">続いている理由を、<br/>6項目で見る。</h2></aside>
+  <div class="timeline-list">
+    <article class="timeline-item" data-reveal><time>01</time><div><h3>発売年</h3><p>最初に登場した年を公式資料・メーカー資料で確認します。</p></div></article>
+    <article class="timeline-item" data-reveal><time>02</time><div><h3>継続販売</h3><p>一時的な復刻ではなく、継続して市場に存在してきたかを見ます。</p></div></article>
+    <article class="timeline-item" data-reveal><time>03</time><div><h3>世代継承</h3><p>型番変更があっても、構造や思想、部品互換が連続しているかを記録します。</p></div></article>
+    <article class="timeline-item" data-reveal><time>04</time><div><h3>修理</h3><p>長く売るメーカーほど、壊れた後の復帰経路が残っているかを確認します。</p></div></article>
+    <article class="timeline-item" data-reveal><time>05</time><div><h3>部品</h3><p>交換部品が今も手に入るか。供給終了も履歴として残します。</p></div></article>
+    <article class="timeline-item" data-reveal><time>06</time><div><h3>中古流通</h3><p>旧型が現在も売買されているか。古くても需要が残る道具を追います。</p></div></article>
+  </div>
+</div></section>
+
+<section class="quote-block paper-section"><div class="shell" data-reveal><p class="kicker">THE RULE</p><blockquote>新しいから載せるのではない。残ってきたから、調べる。</blockquote></div></section>
+</main><SiteFooter/></BaseLayout>
