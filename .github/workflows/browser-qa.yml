@@ -16,13 +16,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm install --no-save playwright@1.55.0
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium firefox webkit
       - name: Generate opening film
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
           mkdir -p public/media
-          ffmpeg -y -f lavfi -i "color=c=0x26352c:s=1280x720:d=4.3:r=24"             -vf "drawbox=x=70:y=60:w=1140:h=600:color=0xf4efe3@0.12:t=2,drawbox=x=0:y=500:w=1280:h=220:color=0x673724@0.28:t=fill"             -an -c:v libvpx-vp9 -crf 38 -b:v 0 -pix_fmt yuv420p public/media/opening.webm
+          ffmpeg -y -f lavfi -i "color=c=0x26352c:s=1280x720:d=4.3:r=24" \
+            -vf "drawbox=x=70:y=60:w=1140:h=600:color=0xf4efe3@0.12:t=2,drawbox=x=0:y=500:w=1280:h=220:color=0x673724@0.28:t=fill" \
+            -an -c:v libvpx-vp9 -crf 38 -b:v 0 -pix_fmt yuv420p public/media/opening.webm
           ffmpeg -y -f lavfi -i "color=c=0x26352c:s=1280x720:d=4.3:r=24" \
             -vf "drawbox=x=70:y=60:w=1140:h=600:color=0xf4efe3@0.12:t=2,drawbox=x=0:y=500:w=1280:h=220:color=0x673724@0.28:t=fill" \
             -an -c:v libx264 -preset veryfast -crf 28 -pix_fmt yuv420p -movflags +faststart public/media/opening.mp4
