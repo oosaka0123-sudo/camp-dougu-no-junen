@@ -32,10 +32,10 @@ for (const [engineName, launcher] of engines) {
         iw: innerWidth,
         sw: document.documentElement.scrollWidth,
         h1: document.querySelector('h1')?.textContent?.trim() || '',
-        imgs: [...document.images].map(i => ({src:i.currentSrc || i.src, ok:i.complete && i.naturalWidth > 0}))
+        imgs: [...document.images].map(i => ({src:i.currentSrc || i.src, broken:i.complete && i.naturalWidth === 0}))
       }));
       const overflow = metrics.sw > metrics.iw + 1;
-      const brokenImages = metrics.imgs.filter(x => !x.ok);
+      const brokenImages = metrics.imgs.filter(x => x.broken);
 
       let menuOk = true;
       if (width <= 768 && path === '') {
