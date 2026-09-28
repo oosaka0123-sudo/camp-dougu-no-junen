@@ -1,7 +1,7 @@
 ---
 const base=import.meta.env.BASE_URL;
-const nav=[['CONCEPT','concept/'],['CATEGORIES','categories/'],['ARCHIVE','archive/'],['REPAIR','repair/'],['VALUE','value/'],['JOURNAL','journal/'],['ABOUT','about/'],['CONTACT','contact/']];
+const nav=[['CONCEPT','concept/'],['LONGSELLER','longseller/'],['CATEGORIES','categories/'],['ARCHIVE','archive/'],['REPAIR','repair/'],['VALUE','value/'],['JOURNAL','journal/'],['ABOUT','about/'],['CONTACT','contact/']];
 ---
-<footer class="site-footer"><div class="shell footer-head"><p class="footer-kicker">CAMP DŌGU NO JŪNEN / EST. 2026</p><h2>十年後に、<br />残っているか。</h2></div>
+<footer class="site-footer"><div class="shell footer-head"><p class="footer-kicker">CAMP DŌGU NO JŪNEN / EST. 2026</p><h2>十年、<br />選ばれているか。</h2></div>
 <div class="shell footer-grid"><nav aria-label="フッターナビゲーション">{nav.map(([label,path],i)=><a href={`${base}${path}`}><span>{String(i+1).padStart(2,'0')}</span>{label}</a>)}</nav>
-<div class="footer-policy"><p>価格・中古相場・修理情報は確認日と根拠を明示。未確認の耐久年数や残価率は創作しません。広告報酬は順位決定に使いません。</p><div class="footer-small"><a href={`${base}privacy/`}>PRIVACY / POLICY</a><a href="https://github.com/oosaka0123-sudo/camp-dougu-no-junen" rel="noreferrer">GITHUB</a></div></div></div></footer>
+<div class="footer-policy"><p>発売年・継続販売年数・価格・中古相場・修理情報は確認日と根拠を明示。未確認の耐久年数や残価率は創作しません。広告報酬は順位決定に使いません。</p><div class="footer-small"><a href={`${base}privacy/`}>PRIVACY / POLICY</a><a href="https://github.com/oosaka0123-sudo/camp-dougu-no-junen" rel="noreferrer">GITHUB</a></div></div></div></footer>

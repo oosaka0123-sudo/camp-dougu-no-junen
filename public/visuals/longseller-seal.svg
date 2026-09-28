@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+<defs><linearGradient id="g"><stop stop-color="#151915"/><stop offset=".55" stop-color="#26352c"/><stop offset="1" stop-color="#673724"/></linearGradient><filter id="n"><feTurbulence baseFrequency=".72" numOctaves="3"/><feComponentTransfer><feFuncA type="table" tableValues="0 .055"/></feComponentTransfer></filter></defs>
+<rect width="1600" height="1000" fill="url(#g)"/><rect width="1600" height="1000" filter="url(#n)"/>
+<rect x="70" y="70" width="1460" height="860" fill="none" stroke="#f4efe3" opacity=".22"/>
+<text x="110" y="170" fill="#f4efe3" font-size="74" font-family="serif" font-weight="700">LONGSELLER / 10Y+</text>
+<text x="112" y="215" fill="#d0b79e" font-size="22" font-family="sans-serif">TIME AS EVIDENCE</text>
+<g transform="translate(1110 520)" fill="none">
+ <circle r="300" stroke="#f4efe3" stroke-width="3" opacity=".22"/>
+ <circle r="245" stroke="#d06d3f" stroke-width="6" opacity=".82"/>
+ <circle r="190" stroke="#f4efe3" stroke-width="3" opacity=".36"/>
+ <circle r="135" stroke="#d06d3f" stroke-width="4" opacity=".55"/>
+ <circle r="80" stroke="#f4efe3" stroke-width="3" opacity=".5"/>
+ <path d="M0-340V340M-340 0H340" stroke="#f4efe3" opacity=".12"/>
+</g>
+<text x="910" y="550" fill="#f4efe3" font-size="120" font-family="serif" font-weight="700">10+</text>
+</svg>
