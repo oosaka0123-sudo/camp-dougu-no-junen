@@ -1,10 +1,39 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';import SiteHeader from '../../../components/SiteHeader.astro';import SiteFooter from '../../../components/SiteFooter.astro';const base=import.meta.env.BASE_URL;
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+const base=import.meta.env.BASE_URL;
 const products=[
-{rank:'01',name:'SOTO フィールドチャッカー ST-451',maker:'SOTO',status:'現行',weight:'157g',temp:'1,300℃',fuel:'CB缶',repair:'メーカー修理窓口あり',resale:'未評価',why:'日本製の現行モデル。公式取説と修理窓口を確認でき、CB缶で燃料入手性も高い。',weak:'圧電点火を含むため、手動着火式ほど構造は単純ではない。',url:'https://soto.shinfuji.co.jp/products/st-451/'},
-{rank:'02',name:'イワタニ アウトドアトーチバーナーII',maker:'Iwatani',status:'2025年3月〜',weight:'約175g',temp:'約1,400℃',fuel:'イワタニCB缶',repair:'取説・メーカー窓口あり',resale:'未評価',why:'現行取扱商品。日本製で燃料体系が明確。',weak:'ABS樹脂を使うため、金属主体のトーチとは劣化ポイントが異なる。',url:'https://www.iwatani.co.jp/jpn/consumer/products/cg/burner/cb-tc-odorp/'},
-{rank:'03',name:'Snow Peak フォールディングトーチ GT-120',maker:'Snow Peak',status:'現行掲載確認',weight:'—',temp:'—',fuel:'専用ガス系',repair:'オンライン修理受付あり',resale:'未評価',why:'長期修理を前提にしたアフターサービス体制が強い。',weak:'「永久保証」は無償修理を意味しない。通常使用の破損や経年劣化は有償対応を含む。',url:'https://www.snowpeak.co.jp/afterservice/'},
-{rank:'04',name:'SOTO スライドガストーチ ST-487',maker:'SOTO',status:'現行',weight:'57g',temp:'1,300℃',fuel:'充てん式',repair:'メーカー修理窓口あり',resale:'未評価',why:'伸縮火口と防塵キャップを備える現行携帯トーチ。',weak:'連続使用は30秒まで。長時間の火起こしとは役割が違う。',url:'https://soto.shinfuji.co.jp/products/st-487/'},
-{rank:'05',name:'SOTO フィールドフレーム ST-490',maker:'SOTO',status:'2026年3月発売',weight:'202g',temp:'800〜1,300℃',fuel:'充てん式',repair:'メーカー修理窓口あり',resale:'未評価',why:'公式仕様と取扱説明書を確認できる新型。',weak:'2026年発売で長期実績がまだないため、十年視点では観察開始段階。',url:'https://soto.shinfuji.co.jp/products/st-490/'}];
+{no:'01',name:'SOTO フィールドチャッカー ST-451',maker:'SOTO',history:'発売年調査中',tier:'未判定',weight:'157g',temp:'1,300℃',fuel:'CB缶',repair:'メーカー修理窓口あり',resale:'未評価',note:'現行性と修理窓口は確認できるが、ロングセラー判定に必要な発売年・継続年数を確認中。',url:'https://soto.shinfuji.co.jp/products/st-451/'},
+{no:'02',name:'イワタニ アウトドアトーチバーナーII',maker:'Iwatani',history:'2025年3月〜',tier:'観察中',weight:'約175g',temp:'約1,400℃',fuel:'イワタニCB缶',repair:'取説・メーカー窓口あり',resale:'未評価',note:'現行製品としては有力だが、2025年発売のためロングセラー評価はまだ行わない。',url:'https://www.iwatani.co.jp/jpn/consumer/products/cg/burner/cb-tc-odorp/'},
+{no:'03',name:'Snow Peak フォールディングトーチ GT-120',maker:'Snow Peak',history:'発売年調査中',tier:'未判定',weight:'—',temp:'—',fuel:'専用ガス系',repair:'オンライン修理受付あり',resale:'未評価',note:'修理体制は評価できるが、十年定番と呼ぶには発売年・継続年数の確認が必要。',url:'https://www.snowpeak.co.jp/afterservice/'},
+{no:'04',name:'SOTO スライドガストーチ ST-487',maker:'SOTO',history:'発売年調査中',tier:'未判定',weight:'57g',temp:'1,300℃',fuel:'充てん式',repair:'メーカー修理窓口あり',resale:'未評価',note:'性能や携帯性ではなく、まず製品系譜と継続年数を確定してから評価する。',url:'https://soto.shinfuji.co.jp/products/st-487/'},
+{no:'05',name:'SOTO フィールドフレーム ST-490',maker:'SOTO',history:'2026年3月〜',tier:'観察中',weight:'202g',temp:'800〜1,300℃',fuel:'充てん式',repair:'メーカー修理窓口あり',resale:'未評価',note:'2026年発売の新製品。十年定番ではなく、将来の定番候補として追跡する。',url:'https://soto.shinfuji.co.jp/products/st-490/'}
+];
 ---
-<BaseLayout title="10年使いたいガストーチ5選" description="修理性・現行性・燃料・公式サポートから選ぶ、長期所有を前提にしたガストーチ5選。" pageType="article"><SiteHeader/><main id="main"><section class="article-hero"><div class="shell article-hero-grid"><div><p class="eyebrow">RANKING / 01 / TORCH</p><h1 class="display-tight">10年使いたい<br/>ガストーチ5選。</h1><p class="lead">売れ筋ではなく「壊れた後に戻れるか」「燃料が続くか」「現行サポートが見えるか」で比較。残価は実取引サンプル収集前のため順位へ入れていません。</p><span class="data-stamp">DATA CHECK / 2026.09.26</span></div><div class="hero-visual"><img src={`${base}visuals/torch-xray.svg`} width="1600" height="1000" alt="ガストーチを分解図のように表現した抽象ビジュアル"/></div></div></section><section class="section-pad bone-section"><div class="shell"><h2 class="section-title">先に、違いを一枚で。</h2><div class="compare-wrap"><table class="compare-table"><thead><tr><th scope="col">順位</th><th scope="col">製品</th><th scope="col">重量</th><th scope="col">温度</th><th scope="col">燃料</th><th scope="col">修理</th><th scope="col">残価</th></tr></thead><tbody>{products.map(p=><tr><td>{p.rank}</td><td><strong>{p.name}</strong><br/><small>{p.status}</small></td><td>{p.weight}</td><td>{p.temp}</td><td>{p.fuel}</td><td>{p.repair}</td><td>{p.resale}</td></tr>)}</tbody></table></div></div></section>{products.map(p=><section class="product-rank"><div class="shell product-rank-grid"><div class="rank-big">{p.rank}</div><div><p class="kicker">{p.maker}</p><h2>{p.name}</h2><p class="lead">{p.why}</p><ul class="fact-list"><li><b>現行性</b><span>{p.status}</span></li><li><b>重量</b><span>{p.weight}</span></li><li><b>火炎温度</b><span>{p.temp}</span></li><li><b>燃料</b><span>{p.fuel}</span></li><li><b>修理</b><span>{p.repair}</span></li><li><b>残価</b><span>{p.resale}</span></li></ul></div><div><p class="kicker">WEAK POINT</p><p>{p.weak}</p><div class="source-links"><a href={p.url} rel="noreferrer">公式情報を見る ↗</a></div></div></div></section>)}<section class="section-pad dark-section"><div class="shell editorial-two"><h2 class="section-title">火器は、修理性だけで選ばない。</h2><div><p class="lead">ガス機器はメーカーの安全指示が最優先です。ユーザー修理を推奨していない製品は自分で分解しません。</p><p>現行の安全表示も購入時に確認します。</p></div></div></section></main><SiteFooter/></BaseLayout>
+<BaseLayout title="ガストーチ5本｜ロングセラー基準で検証" description="ガストーチ5製品を、発売年・継続販売・修理・部品・中古流通のロングセラー基準でスクリーニングします。" pageType="article">
+<SiteHeader/><main id="main">
+<section class="article-hero"><div class="shell article-hero-grid">
+  <div><p class="eyebrow">SCREENING / 01 / TORCH</p><h1 class="display-tight">ガストーチ5本。<br/>ロングセラー基準で見る。</h1><p class="lead">このページでは「おすすめ順」を先に決めません。発売年と継続年数を確認し、10年以上なら「十年定番」、5〜9年なら「定番候補」、5年未満は「観察中」として追跡します。</p><span class="data-stamp">DATA CHECK / 2026.09.28</span></div>
+  <div class="hero-visual"><img src={`${base}visuals/torch-xray.svg`} width="1600" height="1000" alt="ガストーチを分解図のように表現した抽象ビジュアル"/></div>
+</div></section>
+
+<section class="section-pad bone-section"><div class="shell">
+  <p class="kicker">LONGSELLER SCREENING</p><h2 class="section-title">順位の前に、継続年数を確認する。</h2>
+  <div class="compare-wrap"><table class="compare-table"><thead><tr><th scope="col">ID</th><th scope="col">製品</th><th scope="col">ロングセラー歴</th><th scope="col">判定</th><th scope="col">修理</th><th scope="col">残価</th></tr></thead><tbody>
+  {products.map(p=><tr><td>{p.no}</td><td><strong>{p.name}</strong></td><td>{p.history}</td><td>{p.tier}</td><td>{p.repair}</td><td>{p.resale}</td></tr>)}
+  </tbody></table></div>
+</div></section>
+
+{products.map(p=><section class="product-rank"><div class="shell product-rank-grid">
+  <div class="rank-big">{p.no}</div>
+  <div><p class="kicker">{p.maker} / {p.tier}</p><h2>{p.name}</h2><p class="lead">{p.note}</p>
+  <ul class="fact-list"><li><b>継続歴</b><span>{p.history}</span></li><li><b>判定</b><span>{p.tier}</span></li><li><b>重量</b><span>{p.weight}</span></li><li><b>火炎温度</b><span>{p.temp}</span></li><li><b>燃料</b><span>{p.fuel}</span></li><li><b>修理</b><span>{p.repair}</span></li><li><b>残価</b><span>{p.resale}</span></li></ul></div>
+  <div><p class="kicker">SOURCE</p><p>ロングセラー判定は、発売年・製品系譜の根拠が確認できてから確定します。</p><div class="source-links"><a href={p.url} rel="noreferrer">公式情報を見る ↗</a></div></div>
+</div></section>)}
+
+<section class="section-pad dark-section"><div class="shell editorial-two">
+  <h2 class="section-title">新製品は、悪くない。<br/>ただし「定番」とは呼ばない。</h2>
+  <div><p class="lead">性能が高くても、発売直後の製品には「売れ続けた時間」という証拠がまだありません。このサイトでは新しさと定番性を分けて扱います。</p><div class="source-links"><a href={`${base}longseller/`}>ロングセラー基準を見る →</a></div></div>
+</div></section>
+</main><SiteFooter/></BaseLayout>
