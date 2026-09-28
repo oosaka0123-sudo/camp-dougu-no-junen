@@ -3,6 +3,68 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 const base=import.meta.env.BASE_URL;
+
+const verified = [
+  {
+    no:'01', category:'焚き火台', maker:'Snow Peak', name:'焚火台 S / M / L',
+    since:'1996', years:'30年', type:'同一コンセプト継続',
+    evidence:'公式が「1996年のデビュー以来、愛され続ける定番商品」と明記。現行S/M/Lも販売。',
+    repair:'オンライン修理受付あり。製品状態に応じて修理・メンテナンス・パーツ交換を案内。',
+    note:'構造が単純で、1.5mm厚ステンレス。ロングセラー歴・現行性・修理窓口の3点を公式確認。',
+    links:[
+      ['製品・歴史','https://www.snowpeak.co.jp/products/ST-030R/'],
+      ['アフターサービス','https://ec.snowpeak.co.jp/guide/after-service/']
+    ]
+  },
+  {
+    no:'02', category:'シングルバーナー', maker:'SOTO', name:'WindMaster 系譜',
+    since:'2013以前', years:'13年以上', type:'世代継承',
+    evidence:'公式会社史で2013年にWindMasterの受賞実績を確認。2026年はSOD-310からSOD-311へアップグレード。',
+    repair:'現行製品ページで取扱説明書・仕様を継続公開。後継SOD-311でも従来ゴトク互換を明記。',
+    note:'同一型番固定ではなく、設計思想とアクセサリー互換を伴う「系譜」として十年定番判定。',
+    links:[
+      ['会社史','https://shinfuji.co.jp/company/'],
+      ['SOD-310','https://soto.shinfuji.co.jp/products/sod-310/'],
+      ['SOD-311','https://soto.shinfuji.co.jp/products/sod-311/']
+    ]
+  },
+  {
+    no:'03', category:'ランタン', maker:'Coleman', name:'286A ワンマントルランタン',
+    since:'1980年代', years:'30年以上', type:'基本構造継続',
+    evidence:'公式が「日本で1980年代からほとんどモデルチェンジせず発売」と明記。2010年ロングライフデザイン賞受賞。',
+    repair:'公式修理受付あり。286A用バルブ、バーナーフレーム、グローブ等の交換部品を現行販売。',
+    note:'「売れ続ける」「直せる」「部品が残る」が最も明確に揃う代表例。',
+    links:[
+      ['受賞・歴史','https://www.coleman.co.jp/about/award/'],
+      ['修理受付','https://www.coleman.co.jp/customersupport/repair/'],
+      ['286A用バルブ','https://ec.coleman.co.jp/item/286A6571.html']
+    ]
+  },
+  {
+    no:'04', category:'チェア', maker:'Helinox', name:'Chair One',
+    since:'2012', years:'14年', type:'原型継続 + 進化',
+    evidence:'Helinox公式がOriginal Chair Oneを2012年導入と明記。2026年もグローバル公式でChair Oneを現行販売。',
+    repair:'5年保証。脚ポールの修理・交換案内、Chair One交換シート・ゴム足などの交換部品を公式販売。',
+    note:'軽量チェアというカテゴリ自体を定着させたロングセラー。日本国内流通仕様との差は個別記事で分けて扱う。',
+    links:[
+      ['ブランド史','https://helinox.com/pages/our-story'],
+      ['Chair One','https://helinox.com/products/chair-one'],
+      ['交換部品','https://helinox.com/collections/replacement-parts']
+    ]
+  },
+  {
+    no:'05', category:'テント', maker:'mont-bell', name:'ムーンライトテント 系譜',
+    since:'1979', years:'47年', type:'コンセプト継承',
+    evidence:'モンベル公式が1979年開発を明記し、現行モデルも「ロングセラーモデル」として販売。',
+    repair:'メーカー修理サービスあり。テントのポール交換を含む修理例と、修理パーツの用意を公式案内。',
+    note:'世代変更で軽量化・居住性は進化しているため、旧型と現行型を同一製品ではなく「系譜」として評価。',
+    links:[
+      ['1979年の記録','https://webshop.montbell.jp/goods/disp.php?product_id=1114004'],
+      ['現行ムーンライト','https://webshop.montbell.jp/goods/disp.php?product_id=1122762'],
+      ['修理サービス','https://support.montbell.jp/common/system/information/disp.php?c=7&id=69']
+    ]
+  },
+];
 ---
 <BaseLayout title="ロングセラー基準" description="キャンプ道具の十年がロングセラーをどう判定するか。発売年・継続販売・世代継承・修理・部品・中古流通を公開基準で評価します。">
 <SiteHeader/><main id="main">
@@ -16,6 +78,33 @@ const base=import.meta.env.BASE_URL;
   <div data-reveal><span class="micro">5–9Y / CANDIDATE</span><h3>定番候補</h3><p>5〜9年の継続実績を確認できるもの。修理・部品・中古流通を追いながら十年定番入りを待ちます。</p></div>
   <div data-reveal><span class="micro">0–4Y / WATCH</span><h3>観察中</h3><p>5年未満、または発売年を確認できないもの。性能が高くてもロングセラーとしては評価を確定しません。</p></div>
 </div></section>
+
+<section class="section-pad paper-section"><div class="shell">
+  <p class="kicker">VERIFIED / FIRST FIVE</p>
+  <h2 class="section-title">公式情報で確認できた、<br/>最初の「十年定番」5本。</h2>
+  <p class="lead">発売年・継続歴をメーカー公式で確認でき、現行性または世代継承、修理・交換部品の経路まで確認できたものから掲載します。残価率は中古実取引データが揃うまで未評価です。</p>
+</div></section>
+
+{verified.map((p)=><section class="product-rank paper-section"><div class="shell product-rank-grid">
+  <div class="rank-big" data-reveal>{p.no}</div>
+  <div data-reveal>
+    <p class="kicker">{p.category} / {p.maker}</p>
+    <h2>{p.name}</h2>
+    <p class="lead">{p.evidence}</p>
+    <ul class="fact-list">
+      <li><b>確認起点</b><span>{p.since}</span></li>
+      <li><b>継続歴</b><span>{p.years}</span></li>
+      <li><b>継続形式</b><span>{p.type}</span></li>
+      <li><b>修理・部品</b><span>{p.repair}</span></li>
+      <li><b>残価</b><span>未評価</span></li>
+    </ul>
+  </div>
+  <div data-reveal>
+    <p class="kicker">WHY IT LASTS</p>
+    <p>{p.note}</p>
+    <div class="source-links">{p.links.map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div>
+  </div>
+</div></section>)}
 
 <section class="section-pad dark-section"><div class="shell timeline">
   <aside data-reveal><p class="kicker">LONGSELLER CHECK</p><h2 class="section-title">続いている理由を、<br/>6項目で見る。</h2></aside>
