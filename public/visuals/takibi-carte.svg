@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+<defs><linearGradient id="g"><stop stop-color="#171a16"/><stop offset=".55" stop-color="#26352c"/><stop offset="1" stop-color="#6f3f2b"/></linearGradient><filter id="n"><feTurbulence baseFrequency=".7" numOctaves="3"/><feComponentTransfer><feFuncA type="table" tableValues="0 .05"/></feComponentTransfer></filter></defs>
+<rect width="1600" height="1000" fill="url(#g)"/><rect width="1600" height="1000" filter="url(#n)"/>
+<rect x="70" y="70" width="1460" height="860" fill="none" stroke="#f4efe3" opacity=".18"/>
+<text x="110" y="170" fill="#f4efe3" font-size="72" font-family="serif" font-weight="700">TAKIBI / CARTE 001</text>
+<text x="112" y="215" fill="#d0b79e" font-size="22" font-family="sans-serif">1996 → 2026 / 30 YEARS</text>
+<g transform="translate(1120 540)" fill="none">
+ <path d="M-210 170L-120-150H120L210 170Z" stroke="#f4efe3" stroke-width="10"/>
+ <path d="M-120-150L0 40L120-150M0 40V220" stroke="#d06d3f" stroke-width="10"/>
+ <circle r="300" stroke="#f4efe3" opacity=".14"/>
+ <circle r="245" stroke="#d06d3f" opacity=".4"/>
+</g>
+</svg>

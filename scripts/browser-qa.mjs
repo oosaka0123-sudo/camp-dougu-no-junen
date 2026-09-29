@@ -2,7 +2,7 @@ import { chromium, firefox, webkit } from 'playwright';
 
 const base = process.env.QA_BASE_URL || 'http://127.0.0.1:4173/';
 const pages = [
-  '', 'concept/', 'longseller/', 'categories/', 'archive/', 'repair/', 'value/',
+  '', 'concept/', 'longseller/', 'longseller/snowpeak-takibi/', 'categories/', 'archive/', 'repair/', 'value/',
   'journal/', 'about/', 'contact/', 'privacy/', 'rankings/torch/'
 ];
 const viewports = [
