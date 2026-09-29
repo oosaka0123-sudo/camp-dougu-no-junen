@@ -102,7 +102,7 @@ const verified = [
   <div data-reveal>
     <p class="kicker">WHY IT LASTS</p>
     <p>{p.note}</p>
-    <div class="source-links">{p.links.map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div>
+    <div class="source-links">{p.no==='01' && <a href={`${base}longseller/snowpeak-takibi/`}>個別カルテを見る →</a>}{p.links.map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div>
   </div>
 </div></section>)}
 
