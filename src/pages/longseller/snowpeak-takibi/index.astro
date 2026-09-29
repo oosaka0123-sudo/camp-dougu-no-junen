@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+const base=import.meta.env.BASE_URL;
+
+const sizes = [
+  {name:'S', code:'ST-031R', people:'1–2人', price:'¥11,880', size:'285×285×205mm', weight:'1.8kg'},
+  {name:'M', code:'ST-033R', people:'2–3人', price:'¥17,160', size:'350×350×248mm', weight:'3.5kg'},
+  {name:'L', code:'ST-032RS', people:'3–4人', price:'¥21,120', size:'455×455×315mm', weight:'5.5kg'},
+];
+
+const checks = [
+  ['本体の歪み','開閉時に大きな引っ掛かりや異常なねじれがないか。多少の焼け色は使用痕として通常。'],
+  ['溶接部','三角パネルと脚パイプの溶接部にクラックや剥離がないか。'],
+  ['脚の接地','4本脚が極端に浮かず、安定して設置できるか。'],
+  ['炭床','付属・同梱される場合はヒビや割れを確認。炭床は消耗品で、割れた場合は修理ではなく単品交換。'],
+  ['収納ケース','破れ、ファスナー、持ち手の状態。ケースは本体より先に傷みやすい。'],
+];
+---
+<BaseLayout title="Snow Peak 焚火台｜十年定番カルテ" description="1996年から続くSnow Peak焚火台を、ロングセラー歴・構造・修理・部品・中古購入時の確認点までまとめた十年定番カルテ。" pageType="article">
+<SiteHeader/><main id="main">
+<section class="article-hero"><div class="shell article-hero-grid">
+  <div data-reveal>
+    <p class="eyebrow">GEAR CARTE / 001 / TAKIBI</p>
+    <h1 class="display-tight">Snow Peak<br/>焚火台。</h1>
+    <p class="lead">1996年デビュー。約30年にわたり基本思想を保ちながら販売され続ける、キャンプ焚火台の代表的ロングセラー。</p>
+    <div class="hero-meta"><span>LONGSELLER / 30Y</span><span>REPAIR / OPEN</span><span>VALUE / 未評価</span></div>
+  </div>
+  <figure data-reveal>
+    <div class="hero-visual"><img src={`${base}visuals/takibi-carte.svg`} width="1600" height="1000" alt="Snow Peak焚火台の構造と年輪を表現した抽象ビジュアル"/></div>
+    <figcaption class="figure-caption"><span>SNOW PEAK / TAKIBI</span><span>1996 → 2026</span></figcaption>
+  </figure>
+</div></section>
+
+<section class="section-pad bone-section"><div class="shell editorial-three">
+  <div data-reveal><span class="micro">LONGSELLER</span><h3>30年</h3><p>Snow Peak公式が1996年デビュー以来の定番商品と明記。</p></div>
+  <div data-reveal><span class="micro">STRUCTURE</span><h3>1.5mm</h3><p>厚さ1.5mmのステンレス板と4本脚。熱と衝撃を受ける単純・頑丈な構造。</p></div>
+  <div data-reveal><span class="micro">VALUE</span><h3>未評価</h3><p>中古相場は実取引サンプルが十分に集まるまで数値化しません。</p></div>
+</div></section>
+
+<section class="section-pad paper-section"><div class="shell editorial-two">
+  <div data-reveal><p class="kicker">WHY IT BECAME A STANDARD</p><h2 class="section-title">なぜ30年、<br/>残ったのか。</h2></div>
+  <div data-reveal>
+    <p class="lead">逆四角錐の4枚パネルを開くだけ。複雑な可動機構や電子部品を持たず、強い熱を直接受ける部分を厚手ステンレスで成立させています。</p>
+    <p>Snow Peakは焚火台を1996年に発売し、現在もS / M / Lを現行販売。Mは公式ストアでも「ロングセラー製品」と明記されています。</p>
+  </div>
+</div></section>
+
+<section class="section-pad dark-section"><div class="shell">
+  <p class="kicker">CURRENT SIZES</p>
+  <h2 class="section-title">現行3サイズを、<br/>同じ目線で比べる。</h2>
+  <div class="compare-wrap"><table class="compare-table">
+    <thead><tr><th scope="col">サイズ</th><th scope="col">型番</th><th scope="col">目安</th><th scope="col">税込価格</th><th scope="col">本体サイズ</th><th scope="col">重量</th></tr></thead>
+    <tbody>{sizes.map(s=><tr><td><strong>{s.name}</strong></td><td>{s.code}</td><td>{s.people}</td><td>{s.price}</td><td>{s.size}</td><td>{s.weight}</td></tr>)}</tbody>
+  </table></div>
+  <p class="micro" style="margin-top:16px">価格・仕様確認日 / 2026.09.29　公式ストア基準</p>
+</div></section>
+
+<section class="section-pad paper-section"><div class="shell editorial-two">
+  <div data-reveal><p class="kicker">REPAIR / PARTS</p><h2 class="section-title">本体は頑丈。<br/>周辺部品は交換して使う。</h2></div>
+  <div data-reveal>
+    <p class="lead">Snow Peakはオンライン修理受付を用意し、購入時期や使用年数にかかわらず相談を受け付けています。ただし「永久保証」は無償修理を意味しません。</p>
+    <p>製品状態に応じて修理・メンテナンス・パーツ交換を案内し、通常使用の破損や経年劣化は有償対応が基本です。</p>
+    <p>焚火台のオプション「炭床」は鋳鉄製の消耗品。ヒビや割れが出た場合は修理対象ではなく、炭床単体の購入が案内されています。</p>
+  </div>
+</div></section>
+
+<section class="section-pad bone-section"><div class="shell">
+  <p class="kicker">USED CHECK</p>
+  <h2 class="section-title">中古で買うなら、<br/>ここを見る。</h2>
+  <div class="timeline-list">
+    {checks.map(([title,text],i)=><article class="timeline-item" data-reveal><time>{String(i+1).padStart(2,'0')}</time><div><h3>{title}</h3><p>{text}</p></div></article>)}
+  </div>
+</div></section>
+
+<section class="section-pad dark-section"><div class="shell editorial-two">
+  <div data-reveal><p class="kicker">WEAK POINTS</p><h2 class="section-title">弱点も、<br/>ロングセラーの一部。</h2></div>
+  <div data-reveal>
+    <p class="lead">弱点は「壊れやすさ」より、重さと収納体積です。Mで3.5kg、Lで5.5kgあり、徒歩・バイクキャンプには不向きです。</p>
+    <p>また、熱による焼け色や細かな変形は避けにくく、新品の外観を維持する道具ではありません。使い込んだ痕跡を受け入れられる人向けです。</p>
+  </div>
+</div></section>
+
+<section class="section-pad paper-section"><div class="shell">
+  <p class="kicker">SOURCE / OFFICIAL</p>
+  <h2 class="section-title">根拠を、<br/>メーカー公式に置く。</h2>
+  <div class="source-links">
+    <a href="https://www.snowpeak.co.jp/products/ST-030R/" rel="noreferrer">1996年からの製品史 ↗</a>
+    <a href="https://ec.snowpeak.co.jp/item/SNP0114A0412" rel="noreferrer">現行M 仕様・価格 ↗</a>
+    <a href="https://www.snowpeak.co.jp/afterservice/" rel="noreferrer">アフターサービス ↗</a>
+    <a href="https://support.snowpeak.co.jp/hc/ja/articles/59489253185689" rel="noreferrer">炭床の修理可否 ↗</a>
+  </div>
+</div></section>
+
+<section class="quote-block bone-section"><div class="shell" data-reveal><p class="kicker">CARTE 001</p><blockquote>三十年売れ続けた事実は、スペック表より強い。</blockquote></div></section>
+</main><SiteFooter/></BaseLayout>
