@@ -13,6 +13,34 @@ const viewports = [
 const engines = [['chromium', chromium], ['firefox', firefox], ['webkit', webkit]];
 
 let failed = false;
+
+// Dedicated opening-video check: first visit must use the committed user film.
+{
+  const browser = await chromium.launch({ headless:true });
+  const context = await browser.newContext({ viewport:{width:1440,height:900}, reducedMotion:'no-preference' });
+  const page = await context.newPage();
+  const errors = [];
+  page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+  page.on('pageerror', err => errors.push(String(err)));
+  await page.goto(base, { waitUntil:'load' });
+  const video = page.locator('[data-opening] video');
+  const meta = await video.evaluate(async (v) => {
+    if (v.readyState < 1) {
+      await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('opening metadata timeout')), 5000);
+        v.addEventListener('loadedmetadata', () => { clearTimeout(timer); resolve(); }, {once:true});
+        v.addEventListener('error', () => { clearTimeout(timer); reject(new Error('opening video error')); }, {once:true});
+      });
+    }
+    return { width:v.videoWidth, height:v.videoHeight, muted:v.muted, src:v.currentSrc };
+  });
+  const openingOk = meta.width === 1280 && meta.height === 720 && meta.muted && meta.src.endsWith('/media/opening.mp4') && errors.length === 0;
+  console.log(JSON.stringify({check:'opening-video',meta,errors,ok:openingOk}));
+  if (!openingOk) failed = true;
+  await context.close();
+  await browser.close();
+}
+
 for (const [engineName, launcher] of engines) {
   const browser = await launcher.launch({ headless:true });
   for (const [label,width,height] of viewports) {
