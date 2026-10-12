@@ -12,6 +12,7 @@ const base = import.meta.env.BASE_URL;
 <script>
   const overlay = document.querySelector('[data-opening]');
   const skip = document.querySelector('[data-opening-skip]');
+  const video = document.querySelector('.opening-film');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const seen = sessionStorage.getItem('camp-ten-opening') === '1';
   const close = () => {
@@ -24,7 +25,11 @@ const base = import.meta.env.BASE_URL;
     if (seen || reduced) overlay.remove();
     else {
       overlay.setAttribute('aria-hidden', 'false');
-      window.setTimeout(close, 4300);
+      if (video instanceof HTMLVideoElement) {
+        video.addEventListener('ended', close, { once: true });
+        video.addEventListener('error', close, { once: true });
+      }
+      window.setTimeout(close, 11000);
     }
   }
   skip?.addEventListener('click', close);
