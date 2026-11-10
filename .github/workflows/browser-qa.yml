@@ -20,7 +20,7 @@ jobs:
       - name: Verify user opening film
         run: |
           test -s public/media/opening.mp4
-          echo "79c749cfbcd9c0c03c6868dc86ccc67b1885b6100e353b57ff933593369c9b0f  public/media/opening.mp4" | sha256sum -c -
+          echo "5d383f3631b47fa4a44ffee09d7f150e0615c8b459ccfc0f7a2c5f00b6b191b2  public/media/opening.mp4" | sha256sum -c -
       - name: Build
         run: npm run build
         env:
