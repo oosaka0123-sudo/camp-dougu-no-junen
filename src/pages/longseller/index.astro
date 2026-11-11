@@ -100,6 +100,7 @@ const verified = [
     </ul>
   </div>
   <div data-reveal>
+    {p.no==='01' && <figure class="longseller-thumb"><img src={`${base}photos/firepit-cooking.webp`} width="1800" height="1202" alt="焚き火の使用イメージ" loading="lazy"/><figcaption>使用イメージ｜Photo: Blake Carpenter / Unsplash</figcaption></figure>}
     <p class="kicker">WHY IT LASTS</p>
     <p>{p.note}</p>
     <div class="source-links">{p.no==='01' && <a href={`${base}longseller/snowpeak-takibi/`}>個別カルテを見る →</a>}{p.links.map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div>
