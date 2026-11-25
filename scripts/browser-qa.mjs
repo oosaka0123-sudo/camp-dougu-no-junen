@@ -14,13 +14,16 @@ const engines = [['chromium', chromium], ['firefox', firefox], ['webkit', webkit
 
 let failed = false;
 
+const isIgnorableConsoleError = (message) =>
+  /Cookie .+ has been rejected because it is in a cross-site context and its .SameSite. is .Lax. or .Strict./i.test(message);
+
 // Dedicated opening-video check: validate source and autoplay/muted attributes without relying on Linux H.264 decoding.
 {
   const browser = await chromium.launch({ headless:true });
   const context = await browser.newContext({ viewport:{width:1440,height:900}, reducedMotion:'no-preference' });
   const page = await context.newPage();
   const errors = [];
-  page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+  page.on('console', msg => { if (msg.type() === 'error' && !isIgnorableConsoleError(msg.text())) errors.push(msg.text()); });
   page.on('pageerror', err => errors.push(String(err)));
   await page.goto(base, { waitUntil:'load' });
 
@@ -55,7 +58,7 @@ for (const [engineName, launcher] of engines) {
     for (const path of pages) {
       const page = await context.newPage();
       const errors = [];
-      page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+      page.on('console', msg => { if (msg.type() === 'error' && !isIgnorableConsoleError(msg.text())) errors.push(msg.text()); });
       page.on('pageerror', err => errors.push(String(err)));
 
       await page.addInitScript(() => sessionStorage.setItem('camp-ten-opening','1'));
