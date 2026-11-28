@@ -2,7 +2,7 @@ import { chromium, firefox, webkit } from 'playwright';
 
 const base = process.env.QA_BASE_URL || 'http://127.0.0.1:4173/';
 const pages = [
-  '', 'concept/', 'longseller/', 'longseller/snowpeak-takibi/', 'categories/', 'archive/', 'repair/', 'value/',
+  '', 'concept/', 'longseller/', 'longseller/snowpeak-takibi/', 'longseller/soto-windmaster/', 'longseller/coleman-286a/', 'longseller/helinox-chair-one/', 'longseller/montbell-moonlight/', 'categories/', 'archive/', 'repair/', 'value/',
   'journal/', 'about/', 'contact/', 'privacy/', 'rankings/torch/'
 ];
 const viewports = [
@@ -63,6 +63,8 @@ for (const [engineName, launcher] of engines) {
 
       await page.addInitScript(() => sessionStorage.setItem('camp-ten-opening','1'));
       const res = await page.goto(new URL(path, base).href, { waitUntil:'load' });
+      await page.locator('img[loading="lazy"]').evaluateAll(imgs => imgs.forEach(img => img.loading='eager'));
+      await page.waitForFunction(() => [...document.images].every(img => img.complete), {timeout: 15000}).catch(()=>{});
       await page.waitForTimeout(80);
 
       const status = res?.status() || 0;
@@ -70,7 +72,7 @@ for (const [engineName, launcher] of engines) {
         iw: innerWidth,
         sw: document.documentElement.scrollWidth,
         h1: document.querySelector('h1')?.textContent?.trim() || '',
-        imgs: [...document.images].map(i => ({src:i.currentSrc || i.src, broken:i.complete && i.naturalWidth === 0}))
+        imgs: [...document.images].map(i => ({src:i.currentSrc || i.src, broken:!i.complete || i.naturalWidth === 0}))
       }));
       const overflow = metrics.sw > metrics.iw + 1;
       const brokenImages = metrics.imgs.filter(x => x.broken);
