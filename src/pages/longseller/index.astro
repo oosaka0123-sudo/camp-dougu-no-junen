@@ -4,82 +4,7 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 const base=import.meta.env.BASE_URL;
 
-const verified = [
-  {
-    no:'01', category:'焚き火台', maker:'Snow Peak', name:'焚火台 S / M / L',
-    since:'1996', years:'30年', type:'同一コンセプト継続',
-    evidence:'公式が「1996年のデビュー以来、愛され続ける定番商品」と明記。現行S/M/Lも販売。',
-    repair:'オンライン修理受付あり。製品状態に応じて修理・メンテナンス・パーツ交換を案内。',
-    note:'構造が単純で、1.5mm厚ステンレス。ロングセラー歴・現行性・修理窓口の3点を公式確認。',
-    image:'https://www.snowpeak.co.jp/takibidai/assets/images/prod_takibidai_used.avif',
-    imageAlt:'使い込まれたSnow Peak 焚火台の公式写真',
-    photoSource:'Snow Peak公式',
-    links:[
-      ['製品・歴史','https://www.snowpeak.co.jp/products/ST-030R/'],
-      ['アフターサービス','https://ec.snowpeak.co.jp/guide/after-service/']
-    ]
-  },
-  {
-    no:'02', category:'シングルバーナー', maker:'SOTO', name:'WindMaster 系譜',
-    since:'2013以前', years:'13年以上', type:'世代継承',
-    evidence:'公式会社史で2013年にWindMasterの受賞実績を確認。2026年はSOD-310からSOD-311へアップグレード。',
-    repair:'現行製品ページで取扱説明書・仕様を継続公開。後継SOD-311でも従来ゴトク互換を明記。',
-    note:'同一型番固定ではなく、設計思想とアクセサリー互換を伴う「系譜」として十年定番判定。',
-    image:'https://soto.shinfuji.co.jp/wp-content/uploads/products/ST-311_01-1.jpg.pagespeed.ce.Q57Fw5eilc.jpg',
-    imageAlt:'SOTO WindMaster SOD-311の公式商品写真',
-    photoSource:'SOTO公式',
-    links:[
-      ['会社史','https://shinfuji.co.jp/company/'],
-      ['SOD-310','https://soto.shinfuji.co.jp/products/sod-310/'],
-      ['SOD-311','https://soto.shinfuji.co.jp/products/sod-311/']
-    ]
-  },
-  {
-    no:'03', category:'ランタン', maker:'Coleman', name:'286A ワンマントルランタン',
-    since:'1980年代', years:'30年以上', type:'基本構造継続',
-    evidence:'公式が「日本で1980年代からほとんどモデルチェンジせず発売」と明記。2010年ロングライフデザイン賞受賞。',
-    repair:'公式修理受付あり。286A用バルブ、バーナーフレーム、グローブ等の交換部品を現行販売。',
-    note:'「売れ続ける」「直せる」「部品が残る」が最も明確に揃う代表例。',
-    image:'https://www.coleman.co.jp/wp-content/uploads/2021/04/286A740J.jpg',
-    imageAlt:'Coleman 286A ワンマントルランタンの公式商品写真',
-    photoSource:'Coleman公式',
-    links:[
-      ['受賞・歴史','https://www.coleman.co.jp/about/award/'],
-      ['修理受付','https://www.coleman.co.jp/customersupport/repair/'],
-      ['286A用バルブ','https://ec.coleman.co.jp/item/286A6571.html']
-    ]
-  },
-  {
-    no:'04', category:'チェア', maker:'Helinox', name:'Chair One',
-    since:'2012', years:'14年', type:'原型継続 + 進化',
-    evidence:'Helinox公式がOriginal Chair Oneを2012年導入と明記。2026年もグローバル公式でChair Oneを現行販売。',
-    repair:'5年保証。脚ポールの修理・交換案内、Chair One交換シート・ゴム足などの交換部品を公式販売。',
-    note:'軽量チェアというカテゴリ自体を定着させたロングセラー。日本国内流通仕様との差は個別記事で分けて扱う。',
-    image:'https://helinox.com/cdn/shop/files/web_chair_one_black_2_440e0c93-9a3b-42a9-9051-cba3d271e6c5.jpg?v=1705614510&width=800',
-    imageAlt:'Helinox Chair Oneの公式商品写真',
-    photoSource:'Helinox公式',
-    links:[
-      ['ブランド史','https://helinox.com/pages/our-story'],
-      ['Chair One','https://helinox.com/products/chair-one'],
-      ['交換部品','https://helinox.com/collections/replacement-parts']
-    ]
-  },
-  {
-    no:'05', category:'テント', maker:'mont-bell', name:'ムーンライトテント 系譜',
-    since:'1979', years:'47年', type:'コンセプト継承',
-    evidence:'モンベル公式が1979年開発を明記し、現行モデルも「ロングセラーモデル」として販売。',
-    repair:'メーカー修理サービスあり。テントのポール交換を含む修理例と、修理パーツの用意を公式案内。',
-    note:'世代変更で軽量化・居住性は進化しているため、旧型と現行型を同一製品ではなく「系譜」として評価。',
-    image:'https://webshop.montbell.jp/common/images/product/cut_c/cc_1122762_01_ltn.jpg',
-    imageAlt:'mont-bell ムーンライト テント1の公式商品写真',
-    photoSource:'mont-bell公式',
-    links:[
-      ['1979年の記録','https://webshop.montbell.jp/goods/disp.php?product_id=1114004'],
-      ['現行ムーンライト','https://webshop.montbell.jp/goods/disp.php?product_id=1122762'],
-      ['修理サービス','https://support.montbell.jp/common/system/information/disp.php?c=7&id=69']
-    ]
-  },
-];
+import { verified } from '../../data/longsellers';
 ---
 <BaseLayout title="ロングセラー基準" description="キャンプ道具の十年がロングセラーをどう判定するか。発売年・継続販売・世代継承・修理・部品・中古流通を公開基準で評価します。">
 <SiteHeader/><main id="main">
@@ -118,7 +43,7 @@ const verified = [
     <figure class="longseller-thumb product-photo"><img src={p.image} alt={p.imageAlt} loading="lazy" referrerpolicy="no-referrer"/><figcaption>PRODUCT PHOTO / {p.photoSource}</figcaption></figure>
     <p class="kicker">WHY IT LASTS</p>
     <p>{p.note}</p>
-    <div class="source-links">{p.no==='01' && <a href={`${base}longseller/snowpeak-takibi/`}>個別カルテを見る →</a>}{p.links.map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div>
+    <div class="source-links"><a href={`${base}longseller/${p.slug}/`}>個別カルテを見る →</a>{p.links.map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div>
   </div>
 </div></section>)}
 

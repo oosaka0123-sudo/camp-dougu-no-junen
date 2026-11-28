@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { verified, details } from '../../data/longsellers';
+export function getStaticPaths() {
+  return verified.filter(p => p.slug !== 'snowpeak-takibi').map(p => ({
+    params: { slug: p.slug },
+    props: { p, d: details[p.slug as keyof typeof details] }
+  }));
+}
+const {p,d}=Astro.props;
+const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title={p.maker+' '+p.name+'｜ロングセラーカルテ'} description={d.headline+' 発売・継続歴、購入前の注意、修理と中古の確認項目を整理。'} pageType="article">
+<SiteHeader/><main id="main">
+<section class="article-hero"><div class="shell article-hero-grid">
+<div><p class="eyebrow">GEAR CARTE / {p.no} / {p.category}</p><h1 class="display-tight">{p.maker}<br/>{p.name}</h1><p class="lead">{d.headline}</p><span class="data-stamp">資料確認 / 2026.11.28</span><div class="source-links"><a href={base+'longseller/'}>十年定番一覧 →</a></div></div>
+<figure class="longseller-thumb product-photo"><img src={p.image} alt={p.imageAlt} referrerpolicy="no-referrer"/><figcaption>PRODUCT PHOTO / {p.photoSource}</figcaption></figure>
+</div></section>
+<section class="section-pad bone-section"><div class="shell editorial-two">
+<h2 class="section-title">継続してきた時間。</h2><div><p class="lead">{p.evidence}</p><ul class="fact-list"><li><b>確認起点</b><span>{p.since}</span></li><li><b>継続歴</b><span>{p.years}（2026年基準）</span></li><li><b>継続形式</b><span>{p.type}</span></li><li><b>残価率</b><span>未評価</span></li></ul><p>{p.note}</p><p>発売からの時間は、個々の製品の寿命や販売台数を保証するものではありません。</p></div>
+</div></section>
+<section class="section-pad paper-section"><div class="shell editorial-two"><h2 class="section-title">選ぶ理由と、<br/>選ばない理由。</h2><div><h3>向いている人</h3><p>{d.use}</p><h3>注意点・弱点</h3><p>{d.weak}</p><h3>購入前のチェック</h3><p>{d.inspect}</p></div></div></section>
+<section class="section-pad dark-section"><div class="shell editorial-two"><h2 class="section-title">修理と部品。</h2><div><p>{p.repair}</p><p>{d.repair}</p><p>修理費・在庫・保証は個体と購入地域で異なります。修理指数は判定材料が揃うまで確定しません。</p><div class="source-links"><a href={base+'repair/'}>修理の評価基準 →</a></div></div></div></section>
+<section class="section-pad bone-section"><div class="shell editorial-two"><h2 class="section-title">中古で選ぶなら。</h2><div><p>{d.market}</p><p>実取引のサンプルが未収集のため、残価率は未評価。掲載価格を成約価格として扱いません。</p><div class="source-links"><a href={base+'value/'}>残価の評価基準 →</a></div></div></div></section>
+<section class="section-pad paper-section"><div class="shell"><p class="kicker">SOURCE / OFFICIAL</p><h2 class="section-title">メーカーの資料で確かめる。</h2><p>本記事は公開資料の調査と購入時の確認観点をまとめたものです。編集部による長期実機試験ではありません。</p><div class="source-links">{[...p.links,...d.extra].map(([label,url])=><a href={url} rel="noreferrer">{label} ↗</a>)}</div><div class="source-links"><a href={base+'archive/'}>全カルテを見る →</a></div></div></section>
+</main><SiteFooter/></BaseLayout>
